@@ -1,0 +1,1 @@
+export const searchBarPlaceholder = 'Search name, email or action';
