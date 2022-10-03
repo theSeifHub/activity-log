@@ -12,16 +12,8 @@ const LogTable = (props: Props) => {
         <th>Action</th>
         <th>Date</th>
       </tr>
-      <LogRow
-        actor={SAMPLE_DATA.actor_name}
-        action={SAMPLE_DATA.action.name}
-        date={new Date(SAMPLE_DATA.occurred_at)}
-      />
-      <LogRow
-        actor={SAMPLE_DATA.actor_name}
-        action={SAMPLE_DATA.action.name}
-        date={new Date(SAMPLE_DATA.occurred_at)}
-      />
+      <LogRow incident={SAMPLE_DATA} />
+      <LogRow incident={SAMPLE_DATA} />
     </table>
   )
 }
