@@ -13,11 +13,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <div>
+      <main className='min-h-screen pt-16 px-16'>
           <SearchBar/>
           <LogTable/>
-        </div>
       </main>
     </div>
   )
