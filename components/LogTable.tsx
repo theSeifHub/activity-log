@@ -1,5 +1,6 @@
 import React from 'react'
 import { SAMPLE_DATA } from '../constants/sample'
+import Footer from './Footer'
 import LogRow from './LogRow'
 
 type Props = {}
@@ -16,6 +17,7 @@ const LogTable = (props: Props) => {
         <LogRow incident={SAMPLE_DATA} />
         <LogRow incident={SAMPLE_DATA} />
         <LogRow incident={SAMPLE_DATA} />
+        <Footer/>
     </div>
   )
 }
