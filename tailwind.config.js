@@ -5,7 +5,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      flexGrow: {
+        '5': 5,
+        '3': 3
+      }
+    },
   },
   plugins: [],
 }
