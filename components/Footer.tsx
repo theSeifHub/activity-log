@@ -1,9 +1,16 @@
 import React from 'react'
 
-const Footer = () => {
+type Props = {
+  onClickLoadMore: () => void,
+}
+
+const Footer = ({ onClickLoadMore }: Props) => {
   return (
     <div className='flex place-center bg-neutral-100 h-14 rounded-b-2xl'>
-      <span className='text-neutral-600 self-center m-auto'>LOAD MORE</span>
+      <button
+        className='text-neutral-600 self-center m-auto'
+        onClick={onClickLoadMore}
+      >LOAD MORE</button>
     </div>
   )
 }

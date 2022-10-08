@@ -24,8 +24,7 @@ export default async function handler(
         actor: true,
         Action: true,
       },
-      skip: (pageNo - 1) * EventsPerPage,
-      take: EventsPerPage,
+      take: pageNo * EventsPerPage,
     });
 
     res.status(200).json({
