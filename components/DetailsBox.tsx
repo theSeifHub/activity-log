@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
-import { IIncident } from '../constants/sample';
+import { IEvent } from '../constants/DTO';
 import { formatDateToMMMdhm } from '../helpers/formatDate';
 
 type Props = {
-  incident: IIncident,
+  event: IEvent,
   onClickClose: () => void,
 }
 
-const DetailsBox = ({ incident, onClickClose }: Props) => {
+const DetailsBox = ({ event, onClickClose }: Props) => {
   return (
     <div className='
       flex justify-between self-center w-[105%] h-80 py-7 px-9
@@ -23,9 +23,9 @@ const DetailsBox = ({ incident, onClickClose }: Props) => {
             <span className='text-gray-400'>ID</span>
           </div>
           <div className='flex flex-col'>
-            <span>{incident.actor_name}</span>
-            <span>{incident.group}</span>
-            <span>{incident.actor_id}</span>
+            <span>{event.actorName}</span>
+            <span>{event.actorGroup}</span>
+            <span>{event.actorId}</span>
           </div>
         </div>
         <h3 className='text-gray-400 font-semibold'>METADATA</h3>
@@ -36,9 +36,9 @@ const DetailsBox = ({ incident, onClickClose }: Props) => {
             <span className='text-gray-400'>X Request ID</span>
           </div>
           <div className='flex flex-col'>
-            <span>{incident.metadata.redirect}</span>
-            <span>{incident.metadata.description}</span>
-            <span>{incident.metadata.x_request_id}</span>
+            <span>{event.metadataRedirect}</span>
+            <span>{event.metadataDescription}</span>
+            <span>{event.metadataXRequestId}</span>
           </div>
         </div>
       </div>
@@ -52,9 +52,9 @@ const DetailsBox = ({ incident, onClickClose }: Props) => {
               <span className='text-gray-400'>ID</span>
             </div>
             <div className='flex flex-col'>
-              <span>{incident.action.name}</span>
-              <span>{incident.action.object}</span>
-              <span>{incident.action.id}</span>
+              <span>{event.actionName}</span>
+              <span>{event.actionObject}</span>
+              <span>{event.actionId}</span>
             </div>
           </div>
           <h3 className='text-gray-400 font-semibold'>TARGET</h3>
@@ -64,8 +64,8 @@ const DetailsBox = ({ incident, onClickClose }: Props) => {
               <span className='text-gray-400'>ID</span>
             </div>
             <div className='flex flex-col'>
-              <span>{incident.target_name}</span>
-              <span>{incident.target_id}</span>
+              <span>{event.targetName}</span>
+              <span>{event.targetId}</span>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ const DetailsBox = ({ incident, onClickClose }: Props) => {
               <span className='text-gray-400'>Readable</span>
             </div>
             <div className='flex flex-col'>
-              <span>{formatDateToMMMdhm(incident.occurred_at)}</span>
+              <span>{formatDateToMMMdhm(event.occurredAt)}</span>
             </div>
           </div>
         </div>
