@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Actor {
+  id     String  @id @map("actor_id")
+  name   String  @map("actor_name")
+  group  String  @default("instatus.com")
+  events Event[]
+}
+
+model Action {
+  id     String  @id
+  name   String
+  object String
+  role   String  @default("user")
+  Event  Event[]
+}
+
+model Event {
+  createdAt           DateTime  @default(now()) @map("created_at")
+  id                  String    @id @default(cuid())
+  object              String
+  actor               Actor     @relation(fields: [actorId], references: [id])
+  actorId             String    @map("actor_id")
+  Action              Action    @relation(fields: [actionId], references: [id])
+  actionId            String
+  targetId            String    @map("target_id")
+  targetName          String    @map("target_name")
+  location            String?
+  occurredAt          DateTime? @map("occurred_at")
+  metadataRedirect    String?   @map("metadata_redirect")
+  metadataDescription String?   @map("metadata_description")
+  metadataXRequestId  String?   @map("metadata_x_request_id")
+}
