@@ -1,7 +1,10 @@
 {
   "name": "activity-log",
   "version": "0.1.0",
-  "private": true,
+  "engines": {
+    "node": "16.0.0"
+  },
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
