@@ -6,9 +6,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      flexGrow: {
-        '5': 5,
-        '3': 3
+      width: {
+        '75': '19rem',
       }
     },
   },
