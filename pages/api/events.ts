@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { Prisma } from '@prisma/client';
 import prisma from '../../lib/prisma';
 import { IDPrefixes } from '../../constants/prefixes';
 import generateRandomId from '../../helpers/generateRandomId';
@@ -18,14 +19,27 @@ export default async function handler(
   await prisma.$connect();
   if (req.method  === 'GET') {
     const pageNo: number = req.query.page ? +req.query.page : 1;
-
-    const events = await prisma.event.findMany({
+    const searchTerm = req.query.q as string;
+    const findManyOptions: Prisma.EventFindManyArgs = {
       include: {
         actor: true,
         Action: true,
       },
       take: pageNo * EventsPerPage,
-    });
+    };
+
+    if (searchTerm.length) {
+      findManyOptions.where = {
+        OR: [
+          { actorId: { contains: searchTerm }},
+          { actionId: { contains: searchTerm }},
+          { targetId: { contains: searchTerm }},
+          { Action: { name: {contains: searchTerm} }},
+        ]
+      };
+    }
+
+    const events = await prisma.event.findMany(findManyOptions);
 
     res.status(200).json({
       message: 'events fetched successfully',

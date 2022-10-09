@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import useSWR from 'swr'
 import { IEvent } from '../constants/DTO'
-import { getEvents } from '../helpers/fetcher'
 import Footer from './Footer'
 import LogRow from './LogRow'
 
-const LogTable = () => {
- const [pages, setPages] = useState(1);
-  const { data } = useSWR(`/events?page=${pages}`, getEvents);
+type Props = {
+  tableData: any,
+  loadMore: () => void,
+}
 
+const LogTable = ({tableData, loadMore}: Props) => {
   return (
     <div className='flex flex-col h-full border-2 border-t-0 border-neutral-100 rounded-b-2xl'>
         <div className='flex justify-between bg-neutral-100 h-16'>
@@ -16,8 +16,8 @@ const LogTable = () => {
           <span className='grow text-neutral-600 text-left pl-5 pt-4'>ACTION</span>
           <span className='grow text-neutral-600 text-left pl-5 pt-4'>DATE</span>
         </div>
-        {data && data.map((evt: IEvent) => <LogRow event={evt} key={evt.id} />)}
-        <Footer onClickLoadMore={()=> setPages(pages + 1)}/>
+        {tableData && tableData.map((evt: IEvent) => <LogRow event={evt} key={evt.id} />)}
+        <Footer onClickLoadMore={loadMore}/>
     </div>
   )
 }
