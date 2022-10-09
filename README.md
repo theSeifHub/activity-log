@@ -1,3 +1,5 @@
+# Instalog
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -10,25 +12,52 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the index page.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Design
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Check project design on [Figma](https://www.figma.com/file/rygmKpkjsqVW4sB503TOOl/Activity-Log?node-id=0%3A1)
+## [API routes](https://nextjs.org/docs/api-routes/introduction)
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+This project contains one API route only that can be accessed on [http://localhost:3000/api/events](http://localhost:3000/api/events). This endpoint can be edited in `pages/api/events.ts`.
 
-To learn more about Next.js, take a look at the following resources:
+#### Available HTTP requests
+`/api/events` is equipped to handle 2 request methods:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. `GET` to list all available events or filter some of them based on _actor_id, target_id, action_id and/or name_ fields.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    Ex. of request url params: [http://localhost:3000/api/events?page=1&q=ASON](http://localhost:3000/api/events?page=1&q=ASON)
 
-## Deploy on Vercel
+    _q_ param will be compared against all actor_id, target_id, action_id and/or name fields in Event db table.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. `POST` to create a new event
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    Ex. of request body object:
+
+    ```json
+      {
+        "actorId": "user_L7C875257B4",
+        "actorName": "Ayman Baz",
+        "actionId": "evt_action_6ALC8HA1073J",
+        "actionName": "added_incident_log",
+        "targetId": "user_DOKVD1U3L030",
+        "targetName": "ayman@instatus.com",
+        "location": "105.40.62.95",
+        "metadataRedirect": "/setup",
+        "metadataDescription": "Incident log created"
+      }
+    ```
+## Used Stack
+
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API. Next.js is a [React](https://reactjs.org/docs/getting-started.html) framework.
+- [TailwindCSS Docs](https://tailwindcss.com/docs/installation) - learn about tailwind css framework.
+- [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) - learn more about the no-boilerplate DB server.
+- [Prisma Documentation](https://www.prisma.io/docs/getting-started) - get to know Prisma, the next generation ORM.
+- ##### Deployed on Vercel
+
+    This Next.js app is deployed on the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme). Visit it here [LINK]()
+
+    Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
