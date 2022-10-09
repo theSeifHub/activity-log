@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BiFilter } from 'react-icons/bi';
 import { searchBarPlaceholder } from '../constants/texts'
 
 type Props = {
@@ -12,7 +13,7 @@ const SearchBar = ({ handleFilter }: Props) => {
       <div className='bg-neutral-100 text-neutral-600 h-11 w-full border-2 rounded-lg'>
         <input
           placeholder={searchBarPlaceholder}
-          className='w-[90%] h-full px-3 bg-transparent focus:outline-none'
+          className='w-[85%] h-full px-3 bg-transparent focus:outline-none'
           value={searchInputVal}
           onChange={(e) => {
             e.preventDefault();
@@ -20,9 +21,12 @@ const SearchBar = ({ handleFilter }: Props) => {
           }} 
         />
         <button
-          className='bg-transparent text-neutral-600 w-[10%] h-full border-l-2 border-gray-200'
+          className='relative bg-transparent text-neutral-600 w-[15%] h-full border-l-2 border-gray-200'
           onClick={() => handleFilter(searchInputVal)}
-        >FILTER</button>
+        >
+          <BiFilter className='absolute left-2.5 top-2' size={25}/>
+          FILTER
+        </button>
       </div>
     </div>
   )

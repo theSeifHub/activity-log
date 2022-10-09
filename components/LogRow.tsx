@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
+import { BiChevronRight } from 'react-icons/bi'
 import { IEvent } from '../constants/DTO';
 import DetailsBox from './DetailsBox';
 import { formatDateToMMMdhm } from '../helpers/formatDate';
@@ -28,12 +28,7 @@ const LogRow = ({ event }: Props) => {
         <span className='grow pr-3 pt-3'>{formatDateToMMMdhm(event.occurredAt)}</span>
         <span className='absolute top-3 right-4'>
           <button type='button' onClick={() => setShowDetailsBox(!showDetailsBox)} title='Show details'>
-            <Image
-              src="/assets/images/greyChevron.png"
-              alt="Open incident details"
-              width={8}
-              height={12}
-            />
+            <BiChevronRight className='' size={30}/>
           </button>
         </span>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import { IoMdClose } from 'react-icons/io'
 import { IEvent } from '../constants/DTO';
 import { formatDateToMMMdhm } from '../helpers/formatDate';
 
@@ -84,11 +84,7 @@ const DetailsBox = ({ event, onClickClose }: Props) => {
       {/* ************************************** */}
       <div className='absolute top-2 right-4'>
         <button type='button' onClick={onClickClose} title='Hide details'>
-          <Image
-            src='/assets/images/close.png'
-            alt='Close details box'
-            width={14} height={14}
-          />
+          <IoMdClose size={20} />
         </button>
       </div>
     </div>
