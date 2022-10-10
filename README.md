@@ -58,6 +58,6 @@ This project contains one API route only that can be accessed on [http://localho
 - [Prisma Documentation](https://www.prisma.io/docs/getting-started) - get to know Prisma, the next generation ORM.
 - ##### Deployed on Vercel
 
-    This Next.js app is deployed on the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme). Visit it here [LINK]()
+    This Next.js app is deployed on the [Netlify Platform](https://docs.netlify.com/get-started/). Visit it here [https://instalog-seifme.netlify.app/](https://instalog-seifme.netlify.app/)
 
     Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
